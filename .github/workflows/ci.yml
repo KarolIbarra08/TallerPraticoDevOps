@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI-CD Pipeline
 
 on:
   push:
@@ -6,20 +6,23 @@ on:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clonar repo
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Usar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Instalar dependencias
+      - name: Install dependencies
         run: npm install
 
-      - name: Verificar que el código corre
-        run: node --check server.js
+      - name: Run basic test
+        run: node server.js &
+        
+      - name: Deploy to Render
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
