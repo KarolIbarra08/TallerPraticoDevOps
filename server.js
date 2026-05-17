@@ -1,13 +1,17 @@
 const express = require("express");
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.get("/", (req, res) => {
-  res.send("Hola CI/CD funcionando (PRUEBAS FINALES  :) ... FINALES) ");
+  res.send("CI/CD funcionando correctamente ");
+  res.send("PRUEBA 1 ");
+  res.send("PRUEBA 2 ");
+  res.send("PRUEBA 3 ");
+  
+
 });
 
-app.listen(3000, () => {
-  console.log("ESTA ES LA PRIMERA PRUEBA");
-  console.log("ESTA ES LA SEGUNDA PRUEBA");
-  console.log("ESTA ES LA TERCERA PRUEBA");
-  console.log("Servidor en puerto 3000");
+app.listen(PORT, () => {
+  console.log("Servidor corriendo en puerto " + PORT);
 });
