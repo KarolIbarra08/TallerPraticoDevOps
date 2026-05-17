@@ -6,5 +6,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(3000, () => {
+  console.log("ESTA ES LA PRIMERA PRUEBA");
   console.log("Servidor en puerto 3000");
 });
